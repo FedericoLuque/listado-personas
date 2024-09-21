@@ -6,11 +6,15 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Persona } from '../persona.model';
+import { LoggingService } from '../LoggingService.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css',
+  /*providers: [
+    LoggingService,
+  ] /*Podemos agregar los proveedores de los servicios que usemos. Si queremos usar este servicio en todos los componentes, debemos añadir este servicio en los proveedores de app.module.ts */
 })
 export class FormularioComponent {
   /* Para pasar la informacion de este componente al componente padre, usamos @Output. Con este decorador, declaramos una variable personaCreada, que crea un objeto EventEmitter. Este objeto se encarga de crear un mensaje con la informacion que vamos a transmitir al componente padre.
@@ -29,6 +33,9 @@ export class FormularioComponent {
   @ViewChild('nombreInput') nombreInput: ElementRef;
   @ViewChild('apellidoInput') apellidoInput: ElementRef;
 
+  /* Usamos un constructor para inyectar el servicio LoggingService */
+  constructor(private loggingService: LoggingService) {}
+
   /* El metodo agregarPersona() declara una variable persona1 que crea un objeto Persona, y en sus propiedades mete los valores de las variables anteriores.
 
   El objeto Persona() está declarado en persona.model.ts y tiene dos propiedades. Importando la clase Persona en la segunda linea de este codigo, podemos crear objetos Persona en el siguiente metodo. */
@@ -40,6 +47,10 @@ export class FormularioComponent {
       this.apellidoInput.nativeElement.value
     );
 
+    /* Gracias al servicio inyectado en el constructor, podemos usar los metodos del servicio. */
+    this.loggingService.enviarMensajeAConsola(
+      'Enviamos persona: ' + persona1.nombre + ' ' + persona1.apellido
+    );
     /* Nuestra variable personaCreada creada en el decorador @Output, del tipo EventEmitter, tiene el metodo .emit para propagar la informacion de este componente al componente padre. Hemos decidido emitir objetos del tipo Persona.
     
     Lo que vamos a propagar, es la variable persona1 de este metodo, que es del tipo Persona. No podemos emitir otro tipo de objeto.
