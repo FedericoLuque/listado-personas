@@ -3,14 +3,7 @@
     <h3>{{ titulo }}</h3>
   </div>
   <hr />
-  <!--   Imprimimos el contenido del componente app-formulario en el componente principal, siendo app-persona el componente hijo, y app-root (este componente) componente el padre.
-
-  Mediante event binding vamos a monitorear el metodo personaCreada.emit(persona1).
-  Cuando este metodo (personaCreada) se llama, recibimos el objeto de tipo event con el objeto (persona1 de tipo Persona) emitido en el componente hijo.
-
-  En resumen, el objeto emitido con personaCreada, se usa como argumento del metodo personaAgregada y se ejecuta.
-  -->
-  <app-formulario (personaCreada)="personaAgregada($event)"></app-formulario>
+  <app-formulario></app-formulario>
   <hr />
   <!-- Property Binding entre Componentes.
   

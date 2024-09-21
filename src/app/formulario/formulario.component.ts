@@ -1,12 +1,7 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
 import { LoggingService } from '../LoggingService.service';
+import { PersonasService } from '../personas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -23,8 +18,6 @@ export class FormularioComponent {
   
   */
 
-  @Output() personaCreada = new EventEmitter<Persona>();
-
   /* Estas dos variables hacen two-way binding con los campos input del formulario. */
   //nombreInput: string = '';
   //apellidoInput: string = '';
@@ -33,8 +26,11 @@ export class FormularioComponent {
   @ViewChild('nombreInput') nombreInput: ElementRef;
   @ViewChild('apellidoInput') apellidoInput: ElementRef;
 
-  /* Usamos un constructor para inyectar el servicio LoggingService */
-  constructor(private loggingService: LoggingService) {}
+  /* Usamos un constructor para inyectar los servicios */
+  constructor(
+    private loggingService: LoggingService,
+    private personasService: PersonasService
+  ) {}
 
   /* El metodo agregarPersona() declara una variable persona1 que crea un objeto Persona, y en sus propiedades mete los valores de las variables anteriores.
 
@@ -48,15 +44,18 @@ export class FormularioComponent {
     );
 
     /* Gracias al servicio inyectado en el constructor, podemos usar los metodos del servicio. */
-    this.loggingService.enviarMensajeAConsola(
+         this.loggingService.enviarMensajeAConsola(
       'Enviamos persona: ' + persona1.nombre + ' ' + persona1.apellido
-    );
+    ); 
+
     /* Nuestra variable personaCreada creada en el decorador @Output, del tipo EventEmitter, tiene el metodo .emit para propagar la informacion de este componente al componente padre. Hemos decidido emitir objetos del tipo Persona.
     
     Lo que vamos a propagar, es la variable persona1 de este metodo, que es del tipo Persona. No podemos emitir otro tipo de objeto.
 
     En resumen, el metodo agregarPersona() declara una variable persona1, crea una persona con sus propiedades, y despues emite esa variable con personaCreada.emit, que es el metodo del objeto que emite objetos Persona.
-    */
-    this.personaCreada.emit(persona1);
+    
+    this.personaCreada.emit(persona1);*/
+
+    this.personasService.agregarPersona(persona1);
   }
 }
