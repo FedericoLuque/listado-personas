@@ -8,10 +8,10 @@
         id="nombre"
         placeholder="Nombre"
         class="form-control"
-        [(ngModel)]="nombreInput"
+        #nombreInput
       />
     </div>
-
+    <!-- Uso de local references con #campo -->
     <div class="col-md-2">
       <label for="apellido" class="visually-hidden">Apellido</label>
       <input
@@ -20,7 +20,7 @@
         id="apellido"
         placeholder="Apellido"
         class="form-control"
-        [(ngModel)]="apellidoInput"
+        #apellidoInput
       />
     </div>
     <div class="col-md-2">
