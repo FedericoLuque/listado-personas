@@ -30,7 +30,11 @@ export class FormularioComponent {
   constructor(
     private loggingService: LoggingService,
     private personasService: PersonasService
-  ) {}
+  ) {
+    this.personasService.saludar.subscribe(
+      (indice: number) => alert("El indice es: " + indice)
+    );
+  }
 
   /* El metodo agregarPersona() declara una variable persona1 que crea un objeto Persona, y en sus propiedades mete los valores de las variables anteriores.
 
