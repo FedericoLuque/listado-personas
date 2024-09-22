@@ -44,9 +44,9 @@ export class FormularioComponent {
     );
 
     /* Gracias al servicio inyectado en el constructor, podemos usar los metodos del servicio. */
-         this.loggingService.enviarMensajeAConsola(
+   /* this.loggingService.enviarMensajeAConsola(
       'Enviamos persona: ' + persona1.nombre + ' ' + persona1.apellido
-    ); 
+    ); */
 
     /* Nuestra variable personaCreada creada en el decorador @Output, del tipo EventEmitter, tiene el metodo .emit para propagar la informacion de este componente al componente padre. Hemos decidido emitir objetos del tipo Persona.
     
