@@ -19,13 +19,10 @@ export class FormularioComponent {
   */
 
   /* Estas dos variables hacen two-way binding con los campos input del formulario. */
-  //nombreInput: string = '';
-  //apellidoInput: string = '';
+  nombreInput: string = '';
+  apellidoInput: string = '';
 
-  /* Uso del decorador @ViewChild */
-  @ViewChild('nombreInput') nombreInput: ElementRef;
-  @ViewChild('apellidoInput') apellidoInput: ElementRef;
-
+  
   /* Usamos un constructor para inyectar los servicios */
   constructor(
     private loggingService: LoggingService,
@@ -43,8 +40,8 @@ export class FormularioComponent {
   /* El metodo debe modificarse segun si usamos two-way binding, local references o el decorador @ViewChild */
   agregarPersona() {
     let persona1 = new Persona(
-      this.nombreInput.nativeElement.value,
-      this.apellidoInput.nativeElement.value
+      this.nombreInput,
+      this.apellidoInput
     );
 
     /* Gracias al servicio inyectado en el constructor, podemos usar los metodos del servicio. */

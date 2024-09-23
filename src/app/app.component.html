@@ -1,10 +1,8 @@
-<div class="container">
-  <div class="col">
-    <h3>{{ titulo }}</h3>
-  </div>
-  <hr />
-  <app-formulario></app-formulario>
-  <hr />
+<div class="box" id="heading">
+  <h1>{{ titulo }}</h1>
+</div>
+
+<div class="box">
   <!-- Property Binding entre Componentes.
   
   Imprimimos el contenido del componente app-persona en el componente principal, siendo app-persona el componente hijo, y app-root (este componente) componente el padre.
@@ -17,4 +15,7 @@
     [indice]="i"
   >
   </app-persona>
+</div>
+<div class="box">
+  <app-formulario></app-formulario>
 </div>
