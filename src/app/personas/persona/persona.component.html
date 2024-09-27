@@ -3,7 +3,8 @@
       <li>
         <!-- con routerLink podemos pasar un enlace y un parametro (indice). 
          La ruta quedaria /personas/1 -->
-        <a [routerLink]="['/personas',indice]">
+        <a [routerLink]="['/personas',indice]"
+            [queryParams]="{modoEdicion:'1'}">
           {{ persona.nombre }} {{ persona.apellido }}
         </a>
       </li>
