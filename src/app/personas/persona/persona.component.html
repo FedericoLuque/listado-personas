@@ -1,6 +1,11 @@
 <div class="item">
-  <input type="checkbox" (click)="emitirSaludo()" />
-  <!-- Como ya estamos recibiendo los datos con @Input en la logica de este componente (persona.component.ts), podemos recorrer el bucle que estamos recibiendo del padre. -->
-
-  <p>{{ indice + 1 }}: {{ persona.nombre }} {{ persona.apellido }}</p>
+    <ul>
+      <li>
+        <!-- con routerLink podemos pasar un enlace y un parametro (indice). 
+         La ruta quedaria /personas/1 -->
+        <a [routerLink]="['/personas',indice]">
+          {{ persona.nombre }} {{ persona.apellido }}
+        </a>
+      </li>
+    </ul>
 </div>
