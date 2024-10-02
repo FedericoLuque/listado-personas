@@ -10,6 +10,8 @@ import { LoggingService } from './LoggingService.service';
 import { PersonasService } from './personas.service';
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
+import { DataServices } from './data.services';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, PersonaComponent, FormularioComponent, PersonasComponent, ErrorComponent],
@@ -17,6 +19,8 @@ import { ErrorComponent } from './error/error.component';
   providers: [
     LoggingService,
     PersonasService,
+    DataServices,
+    provideHttpClient(withInterceptorsFromDi())
   ] /* Servicios compartidos con todos los componentes de nuestra aplicación */,
   bootstrap: [AppComponent],
 })

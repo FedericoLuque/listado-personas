@@ -18,7 +18,13 @@ export class PersonasComponent {
   ) {}
 
   ngOnInit(): void {
-    this.personas = this.personasService.personas;
+    this.personasService.obtenerPersonas()
+    .subscribe(
+      (personas: Persona[]) => {
+        this.personas = personas;
+        this.personasService.setPersonas(personas);
+      }
+    );
   }
 
   agregar(){
