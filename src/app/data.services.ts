@@ -24,4 +24,16 @@ export class DataServices {
         complete: () => console.log("Petición completada con éxito")
   });
   }
+
+  modificarPersona(index:number, persona:Persona){
+    let url: string;
+    url = 'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos/' + index + '.json';
+    this.httpClient.put(url, persona).subscribe({
+      next: (response) => console.log("resultado modificar Persona: " + response),
+      error: (error) => console.log("Error: " + error)
+    }
+    )
+  }
+
+
 }
