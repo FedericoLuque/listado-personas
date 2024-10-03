@@ -7,15 +7,16 @@ import { Observable } from 'rxjs';
 export class DataServices {
   constructor(private httpClient: HttpClient) {}
 
-    cargarPersonas(): Observable<Persona[]>{
-        return this.httpClient.get<Persona[]>('https://listado-personas-37f30-default-rtdb.firebaseio.com/datos.json');
-    }
+  private readonly BASE_URL:string = 'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos/';
 
+    cargarPersonas(): Observable<Persona[]>{
+        return this.httpClient.get<Persona[]>('${BASE_URL}/datos.json');
+    }
 
   guardarPersonas(personas: Persona[]) {
     this.httpClient
       .put(
-        'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos.json',
+        '${BASE_URL}/datos.json',
         personas
       )
       .subscribe({
@@ -26,8 +27,7 @@ export class DataServices {
   }
 
   modificarPersona(index:number, persona:Persona){
-    let url: string;
-    url = 'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos/' + index + '.json';
+    const url = '${BASE_URL} + index + .json';
     this.httpClient.put(url, persona).subscribe({
       next: (response) => console.log("resultado modificar Persona: " + response),
       error: (error) => console.log("Error: " + error)
@@ -35,5 +35,13 @@ export class DataServices {
     )
   }
 
+  eliminarPersona(index: number){
+    const url = '${BASE_URL} + index + .json';
+    this.httpClient.delete(url).subscribe({
+      next: (response) => console.log("resultado de eliminar persona: " + response),
+      error: (error) => console.log("Error eliminando persona: " + error)
+    }
+  )
+  }
 
 }
