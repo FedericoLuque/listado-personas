@@ -8,13 +8,13 @@ export class DataServices {
   constructor(private httpClient: HttpClient) {}
 
     cargarPersonas(): Observable<Persona[]>{
-        return this.httpClient.get<Persona[]>('https://listado-personas-37f30-default-rtdb.firebaseio.com/datos/datos.json');
+        return this.httpClient.get<Persona[]>('https://listado-personas-37f30-default-rtdb.firebaseio.com/datos.json');
     }
 
   guardarPersonas(personas: Persona[]) {
     this.httpClient
       .put(
-        'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos//datos.json',
+        'https://listado-personas-37f30-default-rtdb.firebaseio.com/datos.json',
         personas
       )
       .subscribe({
