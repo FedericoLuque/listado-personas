@@ -1,5 +1,19 @@
+<div *ngIf="!isAutenticado()" class="box centrado">
+  <a routerLink="/login">Login</a>
+</div>
+
+
+
+<div *ngIf="isAutenticado()" class="box centrado">
+  <a style="cursor: pointer" (click)="salir()">Salir</a>
+</div>
+
 <div class="box" id="heading">
   <h1>{{ titulo }}</h1>
 </div>
 
 <router-outlet></router-outlet>
+
+<div *ngIf="!isAutenticado()" class="box centrado">
+  <span>Email: fluque87&#64;gmail.com | Contraseña: 111111</span>
+</div>

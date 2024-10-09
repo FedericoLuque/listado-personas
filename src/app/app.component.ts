@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Persona } from './persona.model'; /* Importamos la clase Persona para poder crear objetos del tipo Persona */
-import { LoggingService } from './LoggingService.service';
-import { PersonasService } from './personas.service';
+import { Component } from '@angular/core';
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +9,14 @@ import { PersonasService } from './personas.service';
 export class AppComponent {
   titulo = 'Listado de Personas';
 
+  constructor(private loginService:LoginService){}
+
+isAutenticado(){
+  return this.loginService.isAutenticado();
+}
+
+salir(){
+  this.loginService.logout();
+}
 
 }

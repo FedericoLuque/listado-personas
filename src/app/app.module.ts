@@ -13,6 +13,8 @@ import { ErrorComponent } from './error/error.component';
 import { DataServices } from './data.services';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { FirebaseService } from './firebase.service';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [AppComponent, PersonaComponent, FormularioComponent, PersonasComponent, ErrorComponent, LoginComponent],
@@ -21,7 +23,9 @@ import { LoginComponent } from './login/login.component';
     LoggingService,
     PersonasService,
     DataServices,
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+    FirebaseService,
+    LoginService
   ] /* Servicios compartidos con todos los componentes de nuestra aplicación */,
   bootstrap: [AppComponent],
 })
