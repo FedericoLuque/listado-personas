@@ -15,6 +15,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { LoginComponent } from './login/login.component';
 import { FirebaseService } from './firebase.service';
 import { LoginService } from './login/login.service';
+import { LoginGuardian } from './login/login-guardian.service';
 
 @NgModule({
   declarations: [AppComponent, PersonaComponent, FormularioComponent, PersonasComponent, ErrorComponent, LoginComponent],
@@ -25,7 +26,8 @@ import { LoginService } from './login/login.service';
     DataServices,
     provideHttpClient(withInterceptorsFromDi()),
     FirebaseService,
-    LoginService
+    LoginService,
+    LoginGuardian
   ] /* Servicios compartidos con todos los componentes de nuestra aplicación */,
   bootstrap: [AppComponent],
 })
